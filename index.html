@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Репетитор по математике — Билобрицкая Валерия | ОГЭ и ЕГЭ в мини-группах</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f4f6f9;
+    --bg-card: #ffffff;
+    --text: #1a2332;
+    --text-muted: #5a6577;
+    --accent: #1e2a4a;
+    --accent-2: #2a3a66;
+    --cta: #f5a623;
+    --cta-hover: #e6941a;
+    --cta-alt: #ff7a3d;
+    --border: #e4e8ef;
+    --success: #2e7d5e;
+    --radius: 16px;
+    --radius-sm: 10px;
+    --shadow-sm: 0 2px 8px rgba(30, 42, 74, 0.06);
+    --shadow-md: 0 8px 24px rgba(30, 42, 74, 0.08);
+    --shadow-lg: 0 20px 50px rgba(30, 42, 74, 0.12);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 { font-family: 'Manrope', 'Inter', sans-serif; line-height: 1.2; font-weight: 700; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* Background math pattern */
+  .bg-math {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.04;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    color: var(--accent);
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  /* Navigation */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    transition: all 0.3s ease;
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--accent);
+  }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 16px;
+    font-family: 'Manrope', sans-serif;
+  }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--cta);
+    color: #1a2332 !important;
+    padding: 10px 20px !important;
+    border-radius: 10px;
+    font-weight: 600 !important;
+    transition: all 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--cta-hover); transform: translateY(-1px); }
+  .burger { display: none; background: none; border: none; cursor: pointer; }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    padding: 140px 0 80px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #fafbfd 0%, #ffffff 100%);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-soft);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+  }
+  .hero-badge .dot {
+    width: 8px; height: 8px;
+    background: #2e7d5e;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.2); }
+  }
+  .hero h1 {
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--cta) 0%, var(--cta-alt) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+  .hero-sub strong { color: var(--text); font-weight: 600; }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 28px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.25s ease;
+    font-family: inherit;
+  }
+  .btn-primary {
+    background: var(--cta);
+    color: #1a2332;
+    box-shadow: 0 8px 20px rgba(245, 166, 35, 0.3);
+  }
+  .btn-primary:hover {
+    background: var(--cta-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(245, 166, 35, 0.4);
+  }
+  .btn-secondary {
+    background: var(--bg);
+    color: var(--accent);
+    border: 1.5px solid var(--border);
+  }
+  .btn-secondary:hover { border-color: var(--accent); background: var(--bg-soft); }
+
+  /* Trust block */
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .trust-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 18px 16px;
+    border-radius: var(--radius-sm);
+    transition: all 0.25s;
+  }
+  .trust-item:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+  .trust-num {
+    font-family: 'Manrope', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .trust-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* Photo */
+  .hero-photo-wrap {
+    position: relative;
+  }
+  .hero-photo {
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #e8ecf3 0%, #d4dbe8 100%);
+    box-shadow: var(--shadow-lg);
+  }
+  .hero-photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 50% 30%, rgba(255,255,255,0.4) 0%, transparent 50%),
+      linear-gradient(180deg, rgba(30,42,74,0.05) 0%, rgba(30,42,74,0.15) 100%);
+  }
+  .hero-photo svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .photo-caption {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-align: center;
+  }
+  .photo-caption strong { color: var(--accent); display: block; font-size: 14px; margin-bottom: 2px; }
+  .photo-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #fff;
+    padding: 10px 14px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Section base */
+  section { padding: 90px 0; position: relative; }
+  .section-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+  .section-label {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--cta-alt);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  .section-head h2 {
+    font-size: clamp(28px, 3.5vw, 40px);
+    color: var(--accent);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .section-head p {
+    font-size: 17px;
+    color: var(--text-muted);
+  }
+
+  /* Why group */
+  .why-section { background: var(--bg-soft); }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .card {
+    background: var(--bg-card);
+    padding: 32px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
+  }
+  .card-icon {
+    width: 52px; height: 52px;
+    background: var(--bg-soft);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--accent);
+  }
+  .card h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+    color: var(--accent);
+  }
+  .card p {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* For whom */
+  .whom-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .whom-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 28px;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .whom-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+  }
+  .whom-tag {
+    display: inline-block;
+    background: var(--bg-soft);
+    color: var(--accent);
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .whom-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--accent);
+  }
+  .whom-card p {
+    color: var(--text-muted);
+    font-size: 15px;
+  }
+  .whom-card .num {
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--bg-soft);
+    line-height: 1;
+  }
+
+  /* How it works */
+  .how-section { background: var(--bg-soft); }
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .how-card {
+    text-align: center;
+    padding: 32px 20px;
+    background: var(--bg);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .how-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .how-num {
+    width: 44px; height: 44px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    margin: 0 auto 20px;
+    font-family: 'Manrope', sans-serif;
+  }
+  .how-card h4 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: var(--accent);
+  }
+  .how-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  /* Results */
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .result-card {
+    background: var(--accent);
+    color: #fff;
+    padding: 36px 28px;
+    border-radius: var(--radius);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .result-card:hover { transform: translateY(-4px); }
+  .result-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(245,166,35,0.15) 0%, transparent 50%);
+  }
+  .result-card:nth-child(2) { background: var(--accent-2); }
+  .result-card:nth-child(3) { background: #2a3a66; }
+  .result-card:nth-child(4) { background: #1e2a4a; }
+  .result-num {
+    font-family: 'Manrope', sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .result-num .accent { color: var(--cta); }
+  .result-label {
+    font-size: 14px;
+    opacity: 0.85;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Pricing */
+  .pricing-section { background: var(--bg-soft); }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+  .price-card {
+    background: var(--bg);
+    border-radius: var(--radius);
+    padding: 40px;
+    border: 1px solid var(--border);
+    position: relative;
+    transition: all 0.3s;
+  }
+  .price-card.featured {
+    border: 2px solid var(--accent);
+    box-shadow: var(--shadow-lg);
+    transform: scale(1.02);
+  }
+  .price-card.featured::before {
+    content: 'Рекомендуем';
+    position: absolute;
+    top: -14px;
+    left: 32px;
+    background: var(--accent);
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .price-card.featured:hover { transform: scale(1.02) translateY(-4px); }
+  .price-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .price-sub {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  .price-amount {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .price-amount .num {
+    font-family: 'Manrope', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .price-amount .cur {
+    font-size: 18px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .price-amount .per {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-left: auto;
+  }
+  .price-features {
+    list-style: none;
+    margin-bottom: 28px;
+  }
+  .price-features li {
+    padding: 10px 0;
+    display: flex;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--text);
+  }
+  .price-features li::before {
+    content: '';
+    width: 20px; height: 20px;
+    background: var(--bg-soft);
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232e7d5e' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-size: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .price-card .btn { width: 100%; justify-content: center; }
+
+  .bonus-strip {
+    margin-top: 24px;
+    background: linear-gradient(135deg, #fff8ec 0%, #fff3d6 100%);
+    border: 1px solid #f5d98a;
+    padding: 20px 24px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .bonus-icon {
+    width: 44px; height: 44px;
+    background: var(--cta);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .bonus-text { font-size: 15px; color: var(--text); }
+  .bonus-text strong { color: var(--accent); }
+
+  /* Location */
+  .location-strip {
+    background: var(--accent);
+    color: #fff;
+    padding: 32px 0;
+  }
+  .location-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .location-icon {
+    width: 44px; height: 44px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .location-text { font-size: 16px; }
+  .location-text strong { color: var(--cta); }
+
+  /* Form */
+  .form-section { background: var(--bg); }
+  .form-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .form-info h2 {
+    font-size: clamp(28px, 3.5vw, 40px);
+    color: var(--accent);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .form-info p {
+    color: var(--text-muted);
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+  .form-benefits { list-style: none; }
+  .form-benefits li {
+    padding: 12px 0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 15px;
+    color: var(--text);
+  }
+  .form-benefits li::before {
+    content: '';
+    width: 24px; height: 24px;
+    background: var(--bg-soft);
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232e7d5e' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-size: 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .form-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px;
+    box-shadow: var(--shadow-lg);
+  }
+  .form-card h3 {
+    font-size: 22px;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .form-card > p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+  .form-group { margin-bottom: 18px; }
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    background: var(--bg);
+    color: var(--text);
+    transition: all 0.2s;
+  }
+  .form-group input:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(30,42,74,0.08);
+  }
+  .form-card .btn { width: 100%; justify-content: center; margin-top: 8px; }
+  .form-note {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--accent);
+    color: #fff;
+    padding: 60px 0 30px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-col h4 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+    color: var(--cta);
+  }
+  .footer-col p, .footer-col a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: #fff; }
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  .footer-about { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+  .social-links { display: flex; gap: 10px; margin-top: 16px; }
+  .social-link {
+    width: 38px; height: 38px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .social-link:hover { background: var(--cta); transform: translateY(-2px); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* Floating math bg */
+  .math-bg {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.035;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--accent);
+    user-select: none;
+  }
+
+  /* Animations */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* Responsive */
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-photo-wrap { order: -1; max-width: 320px; margin: 0 auto; }
+    .trust-grid { grid-template-columns: repeat(2, 1fr); }
+    .cards-grid { grid-template-columns: 1fr; }
+    .whom-grid { grid-template-columns: 1fr; }
+    .how-grid { grid-template-columns: repeat(2, 1fr); }
+    .results-grid { grid-template-columns: repeat(2, 1fr); }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .price-card.featured { transform: none; }
+    .price-card.featured:hover { transform: translateY(-4px); }
+    .form-wrap { grid-template-columns: 1fr; gap: 40px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    .burger { display: block; }
+    section { padding: 70px 0; }
+  }
+  @media (max-width: 560px) {
+    .hero { padding: 110px 0 60px; }
+    .trust-grid { grid-template-columns: 1fr 1fr; }
+    .how-grid { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .form-card { padding: 28px 20px; }
+    .price-card { padding: 28px 20px; }
+    .card { padding: 24px; }
+    .btn { padding: 14px 22px; font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="container nav-inner">
+    <div class="logo">
+      <div class="logo-icon">ВБ</div>
+      <span>Билобрицкая В.</span>
+    </div>
+    <div class="nav-links">
+      <a href="#why">Почему группа</a>
+      <a href="#how">Как проходит</a>
+      <a href="#results">Результаты</a>
+      <a href="#pricing">Стоимость</a>
+      <a href="#form" class="nav-cta">Записаться</a>
+    </div>
+    <button class="burger" aria-label="Меню">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2332" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="math-bg" style="top:15%;left:5%;font-size:120px;transform:rotate(-15deg)">∑</div>
+  <div class="math-bg" style="bottom:10%;right:8%;font-size:160px;transform:rotate(12deg)">∫</div>
+  <div class="math-bg" style="top:40%;right:25%;font-size:80px">π</div>
+  <div class="math-bg" style="bottom:30%;left:15%;font-size:100px">√</div>
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Набор в группы на 2026/2027 учебный год открыт
+        </div>
+        <h1>Сдайте на высокий балл вместе: <span>разбор задач, соревновательный эффект и поддержка каждого</span></h1>
+        <p class="hero-sub">
+          Мини-группы до 3 человек — <strong>900 ₽ с ученика</strong>. Индивидуальные занятия — <strong>1 500 ₽</strong>. 
+          Очные занятия в центре Хабаровска. Стаж более 5 лет.
+        </p>
+        <div class="hero-ctas">
+          <a href="#form" class="btn btn-primary">
+            Выбрать формат и записаться
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#pricing" class="btn btn-secondary">Посмотреть стоимость</a>
+        </div>
+        <div class="trust-grid">
+          <div class="trust-item">
+            <span class="trust-num">5+</span>
+            <span class="trust-label">лет преподавательского стажа</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-num">82</span>
+            <span class="trust-label">средний балл учеников</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-num">90%</span>
+            <span class="trust-label">сдали на 75+ баллов</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-num">📍</span>
+            <span class="trust-label">очно в центре Хабаровска</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo">
+          <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#e8ecf3"/>
+                <stop offset="100%" stop-color="#cdd5e3"/>
+              </linearGradient>
+              <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#f5d8c0"/>
+                <stop offset="100%" stop-color="#e8c4a8"/>
+              </linearGradient>
+              <linearGradient id="hairGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#3a2817"/>
+                <stop offset="100%" stop-color="#1f1408"/>
+              </linearGradient>
+              <linearGradient id="blazerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#2a3a66"/>
+                <stop offset="100%" stop-color="#1a2340"/>
+              </linearGradient>
+            </defs>
+            <!-- Background -->
+            <rect width="400" height="500" fill="url(#bgGrad)"/>
+            <!-- Subtle bookshelf hint -->
+            <rect x="0" y="0" width="400" height="120" fill="#d4dbe8" opacity="0.5"/>
+            <rect x="20" y="30" width="30" height="90" fill="#b8c4d8" opacity="0.4"/>
+            <rect x="60" y="40" width="25" height="80" fill="#a8b5cc" opacity="0.4"/>
+            <rect x="95" y="25" width="28" height="95" fill="#c0c9dc" opacity="0.4"/>
+            <rect x="300" y="35" width="30" height="85" fill="#b8c4d8" opacity="0.4"/>
+            <rect x="340" y="45" width="25" height="75" fill="#a8b5cc" opacity="0.4"/>
+            <rect x="370" y="30" width="25" height="90" fill="#c0c9dc" opacity="0.4"/>
+            <!-- Shoulders/Blazer -->
+            <path d="M 80 500 Q 80 380 140 350 Q 200 330 260 350 Q 320 380 320 500 Z" fill="url(#blazerGrad)"/>
+            <!-- Blazer lapels -->
+            <path d="M 140 350 L 170 420 L 200 380 L 230 420 L 260 350 Q 200 330 140 350 Z" fill="#1a2340" opacity="0.6"/>
+            <!-- White blouse -->
+            <path d="M 170 380 L 185 450 L 200 440 L 215 450 L 230 380 Q 200 370 170 380 Z" fill="#ffffff"/>
+            <!-- Neck -->
+            <rect x="180" y="290" width="40" height="60" fill="url(#skinGrad)" rx="8"/>
+            <!-- Face -->
+            <ellipse cx="200" cy="220" rx="75" ry="90" fill="url(#skinGrad)"/>
+            <!-- Hair back -->
+            <path d="M 115 200 Q 110 130 160 110 Q 200 95 240 110 Q 290 130 285 200 Q 290 260 275 300 Q 270 280 270 250 Q 275 220 260 190 Q 240 160 200 155 Q 160 160 140 190 Q 125 220 130 250 Q 130 280 125 300 Q 110 260 115 200 Z" fill="url(#hairGrad)"/>
+            <!-- Hair front -->
+            <path d="M 130 180 Q 140 140 180 125 Q 200 120 220 125 Q 260 140 270 180 Q 255 150 220 140 Q 200 135 180 140 Q 145 150 130 180 Z" fill="url(#hairGrad)"/>
+            <!-- Hair strands left -->
+            <path d="M 125 200 Q 120 260 130 310 Q 125 290 122 250 Q 120 220 125 200 Z" fill="url(#hairGrad)"/>
+            <!-- Hair strands right -->
+            <path d="M 275 200 Q 280 260 270 310 Q 275 290 278 250 Q 280 220 275 200 Z" fill="url(#hairGrad)"/>
+            <!-- Eyebrows -->
+            <path d="M 160 195 Q 175 188 190 192" stroke="#2a1a0a" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M 210 192 Q 225 188 240 195" stroke="#2a1a0a" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <!-- Eyes -->
+            <ellipse cx="175" cy="210" rx="10" ry="6" fill="#fff"/>
+            <ellipse cx="225" cy="210" rx="10" ry="6" fill="#fff"/>
+            <circle cx="175" cy="210" r="5" fill="#3a2817"/>
+            <circle cx="225" cy="210" r="5" fill="#3a2817"/>
+            <circle cx="176" cy="208" r="1.5" fill="#fff"/>
+            <circle cx="226" cy="208" r="1.5" fill="#fff"/>
+            <!-- Nose -->
+            <path d="M 200 220 Q 195 240 198 250 Q 200 253 202 250 Q 205 240 200 220" fill="#d4a888" opacity="0.5"/>
+            <!-- Smile -->
+            <path d="M 175 265 Q 200 285 225 265" stroke="#a05040" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M 178 266 Q 200 278 222 266 Q 200 272 178 266 Z" fill="#c87060" opacity="0.6"/>
+            <!-- Cheeks -->
+            <circle cx="160" cy="245" r="12" fill="#f0a888" opacity="0.3"/>
+            <circle cx="240" cy="245" r="12" fill="#f0a888" opacity="0.3"/>
+            <!-- Earrings -->
+            <circle cx="125" cy="235" r="3" fill="#f5a623"/>
+            <circle cx="275" cy="235" r="3" fill="#f5a623"/>
+          </svg>
+          <div class="photo-caption">
+            <strong>Билобрицкая Валерия</strong>
+            Репетитор по математике · стаж 5+ лет
+          </div>
+          <div class="photo-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#2e7d5e"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            5+ лет опыта
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why group -->
+<section class="why-section" id="why">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="section-label">Преимущества формата</span>
+      <h2>Почему мини-группа работает лучше</h2>
+      <p>Это не «дешёвый вариант», а более эффективный формат за счёт взаимодействия учеников</p>
+    </div>
+    <div class="cards-grid">
+      <div class="card fade-up">
+        <div class="card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>Эффект соревновательности</h3>
+        <p>Ученики быстрее решают типовые задачи и меньше боятся ошибок — видят, что другие тоже ошибаются и справляются.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>Несколько способов решения</h3>
+        <p>Разбор одной задачи разными методами: каждый видит разные подходы и лучше запоминает алгоритм.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Взаимное объяснение</h3>
+        <p>Проверка и объяснение друг другу — самый сильный способ закрепить тему. Учишь другого — понимаешь сам.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Цена ниже, внимания — достаточно</h3>
+        <p>Группа строго до 3 человек. Экономия 40% по сравнению с индивидуальным форматом без потери качества.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- For whom -->
+<section>
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="section-label">Для кого</span>
+      <h2>Кому подойдёт мини-группа</h2>
+      <p>Основной рекомендуемый формат для большинства учеников</p>
+    </div>
+    <div class="whom-grid">
+      <div class="whom-card fade-up">
+        <span class="num">01</span>
+        <span class="whom-tag">5–6 класс</span>
+        <h3>Закрыть пробелы</h3>
+        <p>Комфортный темп, поддержка сверстников и регулярная практика без стресса и давления.</p>
+      </div>
+      <div class="whom-card fade-up">
+        <span class="num">02</span>
+        <span class="whom-tag">ОГЭ</span>
+        <h3>Системная подготовка</h3>
+        <p>Регулярные мини-пробники внутри группы, разбор типичных ошибок и отработка всех заданий.</p>
+      </div>
+      <div class="whom-card fade-up">
+        <span class="num">03</span>
+        <span class="whom-tag">ЕГЭ профиль</span>
+        <h3>Вторая часть на высокий балл</h3>
+        <p>Разбор сложных задач с обсуждением разных решений и типичных ловушек экзамена.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="how-section" id="how">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="section-label">Процесс</span>
+      <h2>Как проходят занятия в мини-группе</h2>
+      <p>Чёткая структура каждого урока — и внимание к каждому ученику</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-card fade-up">
+        <div class="how-num">1</div>
+        <h4>Разбор ошибок</h4>
+        <p>Домашние работы проверяются заранее, на уроке разбираем типичные ошибки всей группы</p>
+      </div>
+      <div class="how-card fade-up">
+        <div class="how-num">2</div>
+        <h4>Совместные тренажёры</h4>
+        <p>Решаем задачи на скорость в формате лёгкого соревнования — мотивация и скорость растут</p>
+      </div>
+      <div class="how-card fade-up">
+        <div class="how-num">3</div>
+        <h4>Индивидуальные комментарии</h4>
+        <p>Каждый ученик получает обратную связь по своим слабым местам после каждого занятия</p>
+      </div>
+      <div class="how-card fade-up">
+        <div class="how-num">4</div>
+        <h4>Чат поддержки</h4>
+        <p>Между занятиями отвечаем на вопросы в общем чате — никто не остаётся один на один с задачей</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Results -->
+<section id="results">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="section-label">Результаты</span>
+      <h2>Цифры, которые говорят сами за себя</h2>
+      <p>Реальные показатели учеников за последний учебный год</p>
+    </div>
+    <div class="results-grid">
+      <div class="result-card fade-up">
+        <div class="result-num">82</div>
+        <div class="result-label">Средний балл<br>учеников</div>
+      </div>
+      <div class="result-card fade-up">
+        <div class="result-num">90<span class="accent">%</span></div>
+        <div class="result-label">Сдали на<br>75+ баллов</div>
+      </div>
+      <div class="result-card fade-up">
+        <div class="result-num">[<span class="accent">__</span>]</div>
+        <div class="result-label">Учеников<br>за год</div>
+      </div>
+      <div class="result-card fade-up">
+        <div class="result-num">[<span class="accent">__</span>]</div>
+        <div class="result-label">Средний рост<br>баллов за 3 мес.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="section-label">Стоимость</span>
+      <h2>Два формата — выбирайте свой</h2>
+      <p>Мини-группа — основной и рекомендуемый вариант для большинства учеников</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card featured fade-up">
+        <div class="price-title">Мини-группа до 3 человек</div>
+        <div class="price-sub">Эффективнее за счёт обсуждения и практики</div>
+        <div class="price-amount">
+          <span class="num">900</span>
+          <span class="cur">₽</span>
+          <span class="per">с ученика / занятие</span>
+        </div>
+        <ul class="price-features">
+          <li>Экономия 40% по сравнению с индивидуальным</li>
+          <li>Соревновательный эффект и мотивация</li>
+          <li>Разбор задач несколькими способами</li>
+          <li>Внимание к каждому в группе до 3 человек</li>
+          <li>Чат поддержки между занятиями</li>
+          <li>Регулярные мини-пробники</li>
+        </ul>
+        <a href="#form" class="btn btn-primary">Записаться в группу</a>
+      </div>
+      <div class="price-card fade-up">
+        <div class="price-title">Индивидуально</div>
+        <div class="price-sub">Для особых случаев и уникальных задач</div>
+        <div class="price-amount">
+          <span class="num">1500</span>
+          <span class="cur">₽</span>
+          <span class="per">за занятие</span>
+        </div>
+        <ul class="price-features">
+          <li>100% фокус на вашу проблему</li>
+          <li>Ускоренный темп подготовки</li>
+          <li>Гибкое расписание</li>
+          <li>Индивидуальная программа</li>
+        </ul>
+        <a href="#form" class="btn btn-secondary">Выбрать индивидуально</a>
+      </div>
+    </div>
+    <div class="bonus-strip fade-up">
+      <div class="bonus-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a2332" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6"/><polyline points="12 15 12 3"/><path d="M7 8l5-5 5 5"/></svg>
+      </div>
+      <div class="bonus-text">
+        <strong>Бонус:</strong> пробный урок в мини-группе со скидкой 30% при записи до <strong>[дата]</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Location -->
+<div class="location-strip">
+  <div class="container">
+    <div class="location-inner">
+      <div class="location-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="location-text">
+        Очные занятия в комфортабельном офисе в центре Хабаровска · <strong>ул. Запарина, 82</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Form -->
+<section class="form-section" id="form">
+  <div class="container">
+    <div class="form-wrap">
+      <div class="form-info fade-up">
+        <span class="section-label">Запись</span>
+        <h2>Оставьте заявку — подберём удобное время</h2>
+        <p>Свяжемся в течение дня, ответим на вопросы и поможем выбрать формат, который подойдёт именно вашему ребёнку.</p>
+        <ul class="form-benefits">
+          <li>Бесплатная консультация перед первым занятием</li>
+          <li>Подбор группы по уровню и целям ученика</li>
+          <li>Гибкое расписание: будни и выходные</li>
+          <li>Пробный урок со скидкой 30%</li>
+        </ul>
+      </div>
+      <div class="form-card fade-up">
+        <h3>Запись на занятие</h3>
+        <p>Заполните форму — мы свяжемся в течение рабочего дня</p>
+        <form id="leadForm" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="name">Имя</label>
+            <input type="text" id="name" name="name" placeholder="Как к вам обращаться" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Телефон</label>
+            <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+          </div>
+          <div class="form-group">
+            <label for="goal">Класс / цель</label>
+            <input type="text" id="goal" name="goal" placeholder="Например: 9 класс, ОГЭ" required>
+          </div>
+          <div class="form-group">
+            <label for="format">Формат</label>
+            <select id="format" name="format">
+              <option value="group" selected>Мини-группа до 3 человек — 900 ₽</option>
+              <option value="individual">Индивидуально — 1 500 ₽</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Отправить заявку
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+          <div class="form-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Конфиденциально · обработка заявки в течение 1 рабочего дня
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">
+          <div class="logo-icon">ВБ</div>
+          <span>Билобрицкая В.</span>
+        </div>
+        <p class="footer-about">Репетитор по математике. Подготовка к ОГЭ и ЕГЭ в мини-группах и индивидуально. Очные занятия в центре Хабаровска.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Telegram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="VK">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.678.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.744-.576.744z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <a href="tel:+79625863761">8 (962) 586-37-61</a>
+        <a href="mailto:valeria@math-tutor.ru">valeria@math-tutor.ru</a>
+        <p>Пн–Сб: 10:00 – 20:00</p>
+      </div>
+      <div class="footer-col">
+        <h4>Навигация</h4>
+        <a href="#why">Почему группа</a>
+        <a href="#how">Как проходит</a>
+        <a href="#results">Результаты</a>
+        <a href="#pricing">Стоимость</a>
+        <a href="#form">Записаться</a>
+      </div>
+      <div class="footer-col">
+        <h4>Адрес</h4>
+        <p>г. Хабаровск<br>ул. Запарина, 82<br>2 этаж, офис 215</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Билобрицкая Валерия. Все права защищены.</div>
+      <div>ИП Билобрицкая В.А. · ИНН 270000000000 · ОГРНИП 300000000000000</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for fade-up animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Form handling
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '✓ Заявка отправлена';
+    btn.style.background = '#2e7d5e';
+    btn.style.color = '#fff';
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+      btn.style.background = '';
+      btn.style.color = '';
+      form.reset();
+      document.getElementById('format').value = 'group';
+    }, 3000);
+  }
+
+  // Phone mask
+  const phoneInput = document.getElementById('phone');
+  phoneInput.addEventListener('input', (e) => {
+    let v = e.target.value.replace(/\D/g, '');
+    if (v.startsWith('7') || v.startsWith('8')) v = v.substring(1);
+    let formatted = '+7';
+    if (v.length > 0) formatted += ' (' + v.substring(0, 3);
+    if (v.length >= 3) formatted += ') ' + v.substring(3, 6);
+    if (v.length >= 6) formatted += '-' + v.substring(6, 8);
+    if (v.length >= 8) formatted += '-' + v.substring(8, 10);
+    e.target.value = formatted;
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
